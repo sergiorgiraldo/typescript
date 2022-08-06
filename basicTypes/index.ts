@@ -1,55 +1,51 @@
-const returningUserDisplay = document.querySelector('#returning-user')
-const userNameDisplay = document.querySelector('#user')
-const reviewTotalDisplay = document.querySelector('#reviews') as HTMLHeadingElement
+import {showReviewTotal, populateUser, Permissions} from './utils'
+import {reviews, properties, footer} from './data'
 
-const reviews = [
-    {
-        name: 'Sheia',
-        stars: 5,
-        loyaltyUser: true,
-        date: '2021-04-03'
-    },
-    {
-        name: 'Andrzej',
-        stars: 3,
-        loyaltyUser: false,
-        date: '2021-03-28'
-    },
-    {
-        name: 'John',
-        stars: 3,
-        loyaltyUser: true,
-        date: '2022-01-28'
-    },
-    {
-        name: 'Omar',
-        stars: 4,
-        loyaltyUser: true,
-        date: '2021-03-27'
-    },
-]
-
-function showReviewTotal(total: number, lastReviewer: string, loyal: boolean){
-    reviewTotalDisplay.innerHTML = 'review total ' + total.toString() + '-last by ' + lastReviewer + (loyal?"⭐":""); 
+const you:{
+        firstName: string;
+        lastName: string;
+        isReturning: boolean;
+        permissions: Permissions;
+        age:number;
+        stayedAt: string[]; // you can have mixed types // stayedAt: ['florida',1] //stayedAt: (string | number)[];
+    } = {
+    firstName: 'John', 
+    lastName: 'Doe',
+    isReturning: true,
+    permissions: Permissions.ADMIN,
+    age:20,
+    stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
-
-reviews.sort(function(a, b) {
-    return Date.parse(b.date) - Date.parse(a.date);
-});
 
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 
-const you = {
-    userName: {firstName: 'Bobby', lastName: 'Brown'},
-    isReturning: true,
-}
+populateUser(you.isReturning, `${you.firstName} ${you.lastName}`);
 
+const propertiesContainer = document.querySelector('.properties');
 
-function populateUser(isReturning: boolean, userName: string ) {
-    if (isReturning){
-        returningUserDisplay.innerHTML = 'back'
+function showDetails(authorityStatus: boolean | Permissions){   
+    if (authorityStatus) {
+        alert("YOU COULD SEE THE PRICES");
     }
-    userNameDisplay.innerHTML = userName
+    else{
+        alert("YOU COULD NOT SEE THE PRICES");
+    }
 }
 
-populateUser(you.isReturning, `${you.userName.firstName} ${you.userName.lastName}` )
+showDetails(you.permissions);
+
+function showProperties(){
+    const propertiesMarkup = properties.map(p => `<div class="card">${p.title}<br /><img src="${p.image}"/><br /></div>`);
+    propertiesContainer.innerHTML = propertiesMarkup.join("");
+}
+
+showProperties();
+
+const footerContainer = document.querySelector('.footer');
+
+function showFooter(){
+    const footerMarkup = footer[0] + " | " + footer[1] + " | " + footer[2] + "°C";
+    footerContainer.innerHTML = footerMarkup;
+}
+
+showFooter();
