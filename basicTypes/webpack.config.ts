@@ -21,8 +21,8 @@ const config: Configuration = {
     extensions: [".ts", ".js"],
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.resolve("."),
+    filename: "index.pack.js",
   }
 };
 
