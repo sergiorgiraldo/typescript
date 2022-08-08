@@ -1,6 +1,6 @@
 import {LoyaltLevels, Permissions} from "./enum"; 
 import {Countries, Prices} from "./types";
-import { IReview } from "./interfaces";
+import IReview from "./interfaces"; //notice this does not have curly braces as IReview is the default
 
 export const reviews: IReview[] = 
 [
