@@ -1,4 +1,5 @@
 import { LoyaltLevels } from "./enum";
+import { IReview } from "./interfaces";
 
 const returningUserDisplay = document.querySelector('#returning-user')
 const userNameDisplay = document.querySelector('#user')
@@ -10,22 +11,12 @@ export function showReviewTotal(total: number, lastReviewer: string, loyal: Loya
 
 export function populateUser(isReturning: boolean, userName: string ) {
     if (isReturning){
-        returningUserDisplay.innerHTML = 'back'
+        if (returningUserDisplay != null) {returningUserDisplay.innerHTML};
     }
-    userNameDisplay.innerHTML = userName
+    if (userNameDisplay != null) {userNameDisplay.innerHTML = userName};
 }
 
-export function getTopTwoReviews(reviews : { 
-     name: string; 
-     stars: number;
-     loyaltyUser: LoyaltLevels;
-     date: string; 
-     }[]) : { 
-         name: string; 
-         stars: number; 
-         loyaltyUser: LoyaltLevels;
-         date: string; 
-         }[]  {
+export function getTopTwoReviews(reviews : IReview[]) : IReview[]  {
     const sortedReviews = reviews.sort((a, b) => b.stars - a.stars);
     return sortedReviews.slice(0,2);
 }

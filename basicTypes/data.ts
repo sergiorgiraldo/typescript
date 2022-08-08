@@ -1,13 +1,8 @@
 import {LoyaltLevels, Permissions} from "./enum"; 
 import {Countries, Prices} from "./types";
+import { IReview } from "./interfaces";
 
-export const reviews: {
-    name: string;
-    stars:number;
-    loyaltyUser: LoyaltLevels;
-    date: string;
-    description: any; //can be anything
-}[] = 
+export const reviews: IReview[] = 
 [
     {
         name: 'Sheia',
@@ -73,7 +68,7 @@ export const properties:{
     {
         image: 'images/poland-property.jpg',
         title: 'Polish Cottage',
-        price: 34,
+        price: 25,
         location: {
             firstLine: 'no 23',
             city: 'Gdansk',
@@ -86,7 +81,7 @@ export const properties:{
     {
         image: 'images/london-property.jpg',
         title: 'London Flat',
-        price: 23,
+        price: 30,
         location: {
             firstLine: 'flat 15',
             city: 'London',

@@ -19,14 +19,14 @@ showDetails(you.permissions);
 function showProperties(){
     const propertiesContainer = document.querySelector('.properties');
     const propertiesMarkup = properties.map(p => `<div class="card">${p.title}<br /><img src="${p.image}"/><br /></div>`);
-    propertiesContainer.innerHTML = propertiesMarkup.join("");
+    if (propertiesContainer != null) propertiesContainer.innerHTML = propertiesMarkup.join("");
 }
 showProperties();
 
 function showFooter(){
     const footerContainer = document.querySelector('.footer');
     const footerMarkup = footer[0] + " | " + footer[1] + " | " + footer[2] + "°C";
-    footerContainer.innerHTML = footerMarkup;
+    if (footerContainer != null) footerContainer.innerHTML = footerMarkup;
 }
 showFooter();
 
@@ -47,9 +47,9 @@ function addReviews(array: {
             const card = document.createElement('div')
             card.classList.add('review-card')
             card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name
-            reviewContainer.appendChild(card)
+            if (reviewContainer != null) reviewContainer.appendChild(card)
         }
-        container.removeChild(button) 
+        if (container != null && button != null) container.removeChild(button) 
     }
 }
-button.addEventListener('click', () => addReviews(reviews))
+if (button != null) button.addEventListener('click', () => addReviews(reviews))
