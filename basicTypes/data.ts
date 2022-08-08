@@ -1,4 +1,4 @@
-import {LoyaltLevels} from './utils'
+import {LoyaltLevels, Permissions} from "./enum"; 
 
 export const reviews: {
     name: string;
@@ -97,5 +97,21 @@ export const properties:{
         isAvailable: true
     }
 ];
+
+export const you:{
+    firstName: string;
+    lastName: string;
+    isReturning: boolean;
+    permissions: Permissions;
+    age:number;
+    stayedAt: string[]; // you can have mixed types // stayedAt: ['florida',1] //stayedAt: (string | number)[];
+} = {
+firstName: 'John', 
+lastName: 'Doe',
+isReturning: true,
+permissions: Permissions.ADMIN,
+age:20,
+stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
+}
 
 export const footer: [string, string, number] = ["Utrecht", Date(), 25]; //tuple
