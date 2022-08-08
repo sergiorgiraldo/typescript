@@ -1,6 +1,6 @@
-import {showReviewTotal, populateUser} from './utils';
+import {showReviewTotal, populateUser, getTopTwoReviews} from './utils';
 import {reviews, properties, footer, you} from './data';
-import { Permissions } from './enum';
+import { LoyaltLevels, Permissions } from './enum';
 
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 
@@ -29,3 +29,27 @@ function showFooter(){
     footerContainer.innerHTML = footerMarkup;
 }
 showFooter();
+
+const container = document.querySelector('.container')
+const reviewContainer = document.querySelector('.reviews')
+const button = document.querySelector('button')
+
+let count = 0
+function addReviews(array: {
+    name: string; 
+    stars: number; 
+    loyaltyUser: LoyaltLevels; 
+    date: string}[]) : void {
+    if (!count ) {
+        count++
+        const topTwo = getTopTwoReviews(array)
+        for (let i = 0; i < topTwo.length; i++) {
+            const card = document.createElement('div')
+            card.classList.add('review-card')
+            card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name
+            reviewContainer.appendChild(card)
+        }
+        container.removeChild(button) 
+    }
+}
+button.addEventListener('click', () => addReviews(reviews))

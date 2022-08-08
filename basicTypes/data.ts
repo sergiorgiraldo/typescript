@@ -1,4 +1,5 @@
 import {LoyaltLevels, Permissions} from "./enum"; 
+import {Countries, Prices} from "./types";
 
 export const reviews: {
     name: string;
@@ -24,14 +25,14 @@ export const reviews: {
     },
     {
         name: 'Jane Doe',
-        stars: 3,
+        stars: 5,
         loyaltyUser: LoyaltLevels.GOLD_USER,
         date: '2022-01-28',
         description:true
     },
     {
         name: 'Omar',
-        stars: 4,
+        stars: 2,
         loyaltyUser: LoyaltLevels.SILVER_USER,
         date: '2021-03-27',
         description: LoyaltLevels.BRONZE_USER
@@ -42,11 +43,10 @@ reviews.sort(function(a, b) {
     return Date.parse(b.date) - Date.parse(a.date);
 });
 
-type Countries = 'Colombia' | 'Poland' | 'United Kingdom';
 export const properties:{
     image: string;
     title:string;
-    price: number;
+    price: Prices;
     location: {
         firstLine: string;
         city: string;

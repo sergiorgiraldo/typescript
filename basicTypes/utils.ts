@@ -15,6 +15,21 @@ export function populateUser(isReturning: boolean, userName: string ) {
     userNameDisplay.innerHTML = userName
 }
 
+export function getTopTwoReviews(reviews : { 
+     name: string; 
+     stars: number;
+     loyaltyUser: LoyaltLevels;
+     date: string; 
+     }[]) : { 
+         name: string; 
+         stars: number; 
+         loyaltyUser: LoyaltLevels;
+         date: string; 
+         }[]  {
+    const sortedReviews = reviews.sort((a, b) => b.stars - a.stars);
+    return sortedReviews.slice(0,2);
+}
+
 // **************
 // se how you can have more than one type for the parameters
 /*
