@@ -1,7 +1,9 @@
 {
     "compilerOptions": {
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "esModuleInterop": true,
-        "target": "ES6"
+        "target": "ES6",
+        "strictFunctionTypes": true,
+        "strict": true
     }
 }
