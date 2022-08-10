@@ -1,2 +1,2 @@
-export type Countries = 'Colombia' | 'Poland' | 'United Kingdom';
-export type Prices = 25 | 30 | 45;
+export type Countries = 'Colombia' | 'Poland' | 'United Kingdom' | 'Malasya';
+export type Prices = 25 | 30 | 35 | 45;

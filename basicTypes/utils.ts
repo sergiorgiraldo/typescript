@@ -1,5 +1,5 @@
 import { LoyaltLevels } from "./enum";
-import { IReview } from "./interfaces";
+import  IReview  from "./interfaces";
 
 const returningUserDisplay = document.querySelector('#returning-user')
 const userNameDisplay = document.querySelector('#user')

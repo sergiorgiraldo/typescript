@@ -1,24 +1,25 @@
 import {showReviewTotal, populateUser, getTopTwoReviews} from './utils';
-import {reviews, properties, footer, you} from './data';
+import {reviews, Property, footer, you, mainProperty} from './data';
 import { LoyaltLevels, Permissions } from './enum';
+import {IProperty} from './interfaces';
 
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 
 populateUser(you.isReturning, `${you.firstName} ${you.lastName}`);
 
-function showDetails(authorityStatus: boolean | Permissions){   
+function showDetails(authorityStatus: boolean | Permissions, property: IProperty): string{   
     if (authorityStatus) {
-        alert("YOU COULD SEE THE PRICES");
+        return property.price + "/night";
     }
     else{
-        alert("YOU COULD NOT SEE THE PRICES");
+        return "";
     }
 }
-showDetails(you.permissions);
 
 function showProperties(){
     const propertiesContainer = document.querySelector('.properties');
-    const propertiesMarkup = properties.map(p => `<div class="card">${p.title}<br /><img src="${p.image}"/><br /></div>`);
+    const propertiesMarkup = Property.map(p => 
+        `<div class="card">${p.title}<br /><img src="${p.image}"/><br />${showDetails(you.permissions, p)}</div>`);
     if (propertiesContainer != null) propertiesContainer.innerHTML = propertiesMarkup.join("");
 }
 showProperties();
@@ -53,3 +54,12 @@ function addReviews(array: {
     }
 }
 if (button != null) button.addEventListener('click', () => addReviews(reviews))
+
+function showMainImage(){
+    const mainImageContainer = document.querySelector('.main-image')
+    const image = document.createElement('img')
+    image.setAttribute('src', mainProperty.src)
+    if (mainImageContainer != null) mainImageContainer.appendChild(image)
+}
+
+showMainImage()

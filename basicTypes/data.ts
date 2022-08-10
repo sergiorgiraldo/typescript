@@ -1,6 +1,6 @@
 import {LoyaltLevels, Permissions} from "./enum"; 
-import {Countries, Prices} from "./types";
-import IReview from "./interfaces"; //notice this does not have curly braces as IReview is the default
+import IReview, { IProperty } from "./interfaces"; //notice this does not have curly braces as IReview is the default
+import {MainProperty} from "./interfaces"
 
 export const reviews: IReview[] = 
 [
@@ -38,19 +38,7 @@ reviews.sort(function(a, b) {
     return Date.parse(b.date) - Date.parse(a.date);
 });
 
-export const properties:{
-    image: string;
-    title:string;
-    price: Prices;
-    location: {
-        firstLine: string;
-        city: string;
-        code: number;
-        country: Countries; //called Type alias, like a domain
-    };
-    contact: [number,string];
-    isAvailable: boolean;
-}[] = 
+export const Property:IProperty[] = 
 [
     {
         image: 'images/colombia-property.jpg',
@@ -90,6 +78,19 @@ export const properties:{
         },
         contact: [ +1123495082908, 'andyluger@aol.com'],
         isAvailable: true
+    },
+    {
+        image: 'images/malasia.jpeg',
+        title: 'Malia Hotel',
+        price: 35,
+        location: {
+            firstLine: 'Room 4',
+            city: 'Malia',
+            code: 45334,
+            country: 'Malasya',
+        },
+        contact: [ +1123495082908, 'andyluger@aol.com'],
+        isAvailable: true
     }
 ];
 
@@ -110,3 +111,13 @@ stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
 export const footer: [string, string, number] = ["Utrecht", Date(), 25]; //tuple
+
+export const mainProperty = new MainProperty(
+    'images/italian-property.jpg', 
+    'Italian House',
+    [{
+        name: 'Olive',
+        stars: 5,
+        loyaltyUser: LoyaltLevels.GOLD_USER,
+        date: '12-04-2021'
+    }] )
