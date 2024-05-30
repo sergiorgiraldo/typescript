@@ -48,36 +48,6 @@ export interface TranslatorApiGetTranslatorByIdRequest {
     translatorId: number
 }
 
-export interface TranslatorApiUpdateTranslatorRequest {
-    /**
-     * Translstor object
-     * @type Translator
-     * @memberof TranslatorApiupdateTranslator
-     */
-    translator: Translator
-}
-
-export interface TranslatorApiUpdateTranslatorWithFormRequest {
-    /**
-     * ID of translator that needs to be updated
-     * @type number
-     * @memberof TranslatorApiupdateTranslatorWithForm
-     */
-    translatorId: number
-    /**
-     * Updated name of the translator
-     * @type string
-     * @memberof TranslatorApiupdateTranslatorWithForm
-     */
-    name?: string
-    /**
-     * Updated language of the translator
-     * @type string
-     * @memberof TranslatorApiupdateTranslatorWithForm
-     */
-    lang?: string
-}
-
 export class ObjectTranslatorApi {
     private api: ObservableTranslatorApi
 
@@ -155,42 +125,6 @@ export class ObjectTranslatorApi {
      */
     public getTranslatorById(param: TranslatorApiGetTranslatorByIdRequest, options?: Configuration): Promise<Translator> {
         return this.api.getTranslatorById(param.translatorId,  options).toPromise();
-    }
-
-    /**
-     * 
-     * Update an existing translator
-     * @param param the request object
-     */
-    public updateTranslatorWithHttpInfo(param: TranslatorApiUpdateTranslatorRequest, options?: Configuration): Promise<HttpInfo<Translator>> {
-        return this.api.updateTranslatorWithHttpInfo(param.translator,  options).toPromise();
-    }
-
-    /**
-     * 
-     * Update an existing translator
-     * @param param the request object
-     */
-    public updateTranslator(param: TranslatorApiUpdateTranslatorRequest, options?: Configuration): Promise<Translator> {
-        return this.api.updateTranslator(param.translator,  options).toPromise();
-    }
-
-    /**
-     * 
-     * Updates a translator in the store with form data
-     * @param param the request object
-     */
-    public updateTranslatorWithFormWithHttpInfo(param: TranslatorApiUpdateTranslatorWithFormRequest, options?: Configuration): Promise<HttpInfo<void>> {
-        return this.api.updateTranslatorWithFormWithHttpInfo(param.translatorId, param.name, param.lang,  options).toPromise();
-    }
-
-    /**
-     * 
-     * Updates a translator in the store with form data
-     * @param param the request object
-     */
-    public updateTranslatorWithForm(param: TranslatorApiUpdateTranslatorWithFormRequest, options?: Configuration): Promise<void> {
-        return this.api.updateTranslatorWithForm(param.translatorId, param.name, param.lang,  options).toPromise();
     }
 
 }
