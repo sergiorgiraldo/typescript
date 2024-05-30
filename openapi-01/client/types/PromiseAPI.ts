@@ -98,50 +98,6 @@ export class PromiseTranslatorApi {
         return result.toPromise();
     }
 
-    /**
-     * 
-     * Update an existing translator
-     * @param translator Translstor object
-     */
-    public updateTranslatorWithHttpInfo(translator: Translator, _options?: Configuration): Promise<HttpInfo<Translator>> {
-        const result = this.api.updateTranslatorWithHttpInfo(translator, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * 
-     * Update an existing translator
-     * @param translator Translstor object
-     */
-    public updateTranslator(translator: Translator, _options?: Configuration): Promise<Translator> {
-        const result = this.api.updateTranslator(translator, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * 
-     * Updates a translator in the store with form data
-     * @param translatorId ID of translator that needs to be updated
-     * @param name Updated name of the translator
-     * @param lang Updated language of the translator
-     */
-    public updateTranslatorWithFormWithHttpInfo(translatorId: number, name?: string, lang?: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.updateTranslatorWithFormWithHttpInfo(translatorId, name, lang, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * 
-     * Updates a translator in the store with form data
-     * @param translatorId ID of translator that needs to be updated
-     * @param name Updated name of the translator
-     * @param lang Updated language of the translator
-     */
-    public updateTranslatorWithForm(translatorId: number, name?: string, lang?: string, _options?: Configuration): Promise<void> {
-        const result = this.api.updateTranslatorWithForm(translatorId, name, lang, _options);
-        return result.toPromise();
-    }
-
 
 }
 
