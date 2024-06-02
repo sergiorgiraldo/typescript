@@ -6,9 +6,9 @@
 - Then I implemented the server, simple, using express
 
 ## client folder
-- Then I used Swagger to generate the code 
+- Then I used Swagger to generate the code, run in the root folder
     - `brew install openapi-generator`
-    - `openapi-generator generate -i translator.yaml -g typescript -o ~/source/typescript/openapi-01/`
+    - `openapi-generator generate -i ./server/translator.yaml -g typescript -o ~/source/typescript/openapi-01/`
 - Then I wrote a test that uses the generated code (./client/tests/index.ts)
 - All code in client is auto-generated, except for the test script
 
