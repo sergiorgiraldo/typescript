@@ -30,7 +30,7 @@ const requestContext2 = requestFactory.findTranslatorsByLang(lang);
 
 requestContext2
 	.then((context) => {
-		const observableResponse: Observable<HttpInfo<Translator>> = fetchLibrary.send(context);
+		const observableResponse: Observable<ResponseContext> = fetchLibrary.send(context);
         
 		observableResponse.pipe((responseContext: ResponseContext) => {
             responseContext.body.text().then((text) => {
