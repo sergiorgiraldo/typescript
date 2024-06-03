@@ -1,7 +1,0 @@
-.openapi-generator-ignore
-apis/TranslatorApi.ts
-apis/index.ts
-index.ts
-models/Translator.ts
-models/index.ts
-runtime.ts
