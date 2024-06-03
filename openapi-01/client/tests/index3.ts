@@ -1,9 +1,14 @@
-import { createConfiguration, TranslatorApi } from "..";
+import { TranslatorApi } from "../dist";
+import {createConfiguration ,ConfigurationParameters} from "../dist/configuration";
 
-const apiConfig = createConfiguration({ authMethods: undefined });
+const apiConfigParams: ConfigurationParameters = {
+    authMethods : {"api_key": "special-key"}, 
+};
+  
+const configuration = createConfiguration(apiConfigParams);
 
 const apiClient = {
-	translatorApi: new TranslatorApi(apiConfig)
+	translatorApi: new TranslatorApi(configuration)
 };
 
 apiClient.translatorApi
