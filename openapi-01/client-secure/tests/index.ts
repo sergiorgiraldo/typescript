@@ -1,11 +1,9 @@
-import { TranslatorApi } from "../dist";
-import {createConfiguration ,ConfigurationParameters} from "../dist/configuration";
-
-const apiConfigParams: ConfigurationParameters = {
-    authMethods : {"api_key": "special-key"}, 
-};
+import { TranslatorApi, createConfiguration } from "..";
+import { ApiMiddleware } from "./middleware";
   
-const configuration = createConfiguration(apiConfigParams);
+const configuration = createConfiguration({
+    middleware : [new ApiMiddleware()]
+});
 
 const apiClient = {
 	translatorApi: new TranslatorApi(configuration)
@@ -14,6 +12,7 @@ const apiClient = {
 apiClient.translatorApi
     .getTranslatorById(1)
     .then((res) => console.log("getTranslatorById", res));
+    
 
 apiClient.translatorApi
 	.getTranslatorByIdWithHttpInfo(1)
