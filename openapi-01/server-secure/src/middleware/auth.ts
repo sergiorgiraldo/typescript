@@ -15,7 +15,7 @@ export const verifyToken = (
 	// Verify the token
 	jwt.verify(token, "special_key", (err, decoded) => {
 		if (err) {
-			return res.status(401).json({ message: "Invalid token" });
+			return res.status(401).json({ message: "Invalid token:" + token});
 		}
 
 		next();
